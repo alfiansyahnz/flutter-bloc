@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'dao/books_dao.dart';
-import 'model/books.model.dart';
+import 'model/books.dart';
+// import 'model/books.model.dart';
 
 class BooksList extends StatefulWidget {
   @override
@@ -30,7 +31,8 @@ class _BooksListState extends State<BooksList> {
           return ListView.builder(
               itemCount: snapshot.data?.length,
               itemBuilder: (context, index) {
-                Books student = snapshot.data?[index] ?? Books();
+                Books student =
+                    snapshot.data?[index] ?? Books(rollNo: 0, name: 'nameless');
                 return snapshot.data?.length == null
                     ? const CircularProgressIndicator()
                     : ListTile(
@@ -38,7 +40,8 @@ class _BooksListState extends State<BooksList> {
                         trailing: Text(student.rollNo.toString()),
                         onTap: () {
                           setState(() {
-                            dau.delete(Books(rollNo: student.rollNo));
+                            dau.delete(Books(
+                                rollNo: student.rollNo, name: student.name));
                             //                       snapshot.data.removeAt(index);
                           });
                         },

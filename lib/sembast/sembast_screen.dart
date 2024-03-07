@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'books_list.dart';
 import 'dao/books_dao.dart';
-import 'model/books.model.dart';
+import 'model/books.dart';
+// import 'model/books.model.dart';
 
 class SembastScreen extends StatefulWidget {
   const SembastScreen({super.key});

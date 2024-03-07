@@ -1,7 +1,8 @@
 import 'package:sembast/sembast.dart';
 
 import '../db/database.dart';
-import '../model/books.model.dart';
+import '../model/books.dart';
+// import '../model/books.model.dart';
 
 class BooksDao {
   static const String folderName = "Books";
