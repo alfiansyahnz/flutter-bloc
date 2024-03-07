@@ -22,10 +22,10 @@ class _ApiClient implements ApiClient {
 
   @override
   Future<ResponseData> getUsers() async {
-    final _extra = <String, dynamic>{};
+    const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<ResponseData>(Options(
       method: 'GET',

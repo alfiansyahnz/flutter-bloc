@@ -8,17 +8,14 @@ class User {
   String email;
   String gender;
   String status;
-  String createdAt;
-  String updatedAt;
 
-  User(
-      {required this.id,
-      required this.name,
-      required this.email,
-      required this.gender,
-      required this.status,
-      required this.createdAt,
-      required this.updatedAt});
+  User({
+    required this.id,
+    required this.name,
+    required this.email,
+    required this.gender,
+    required this.status,
+  });
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);
@@ -28,7 +25,7 @@ class User {
 class ResponseData {
   int code;
   dynamic meta;
-  List<dynamic> data;
+  List<User> data;
   ResponseData({required this.code, required this.meta, required this.data});
   factory ResponseData.fromJson(Map<String, dynamic> json) =>
       _$ResponseDataFromJson(json);

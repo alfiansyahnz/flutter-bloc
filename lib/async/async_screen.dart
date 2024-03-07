@@ -57,14 +57,14 @@ class _AsynchronousScreenState extends State<AsynchronousScreen> {
               size: 50,
             ),
             title: Text(
-              posts.data[index]['name'],
+              posts.data[index].name,
               style: const TextStyle(fontSize: 20),
             ),
-            subtitle: Text(posts.data[index]['email']),
+            subtitle: Text(posts.data[index].status),
           ),
         );
       },
-      itemCount: posts.data.length,
+      itemCount: 3,
     );
   }
 }

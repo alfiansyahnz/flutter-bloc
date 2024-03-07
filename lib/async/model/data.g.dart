@@ -12,8 +12,6 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
       email: json['email'] as String,
       gender: json['gender'] as String,
       status: json['status'] as String,
-      createdAt: json['createdAt'] as String,
-      updatedAt: json['updatedAt'] as String,
     );
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
@@ -22,14 +20,14 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'email': instance.email,
       'gender': instance.gender,
       'status': instance.status,
-      'createdAt': instance.createdAt,
-      'updatedAt': instance.updatedAt,
     };
 
 ResponseData _$ResponseDataFromJson(Map<String, dynamic> json) => ResponseData(
       code: json['code'] as int,
       meta: json['meta'],
-      data: json['data'] as List<dynamic>,
+      data: (json['data'] as List<dynamic>)
+          .map((e) => User.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$ResponseDataToJson(ResponseData instance) =>
