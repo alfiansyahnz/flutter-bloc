@@ -16,11 +16,12 @@ class _BlocScreenState extends State<BlocScreen> {
       appBar: AppBar(
         title: const Text('Demo Test'),
       ),
-      body: BlocProvider(create: (_) => DemoBloc(), child: _content(context)),
+      body: BlocProvider(
+          create: (_) => DemoBloc(), child: _contentBlocConsumer(context)),
     );
   }
 
-  Widget _content(BuildContext context) {
+  Widget _contentBlocBuilder(BuildContext context) {
     return BlocBuilder<DemoBloc, DemoState>(
       builder: (context, state) {
         return Column(
@@ -28,22 +29,69 @@ class _BlocScreenState extends State<BlocScreen> {
             Center(
               child: Text('${state.number}'),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.end,
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                TextButton(
-                  child: const Icon(Icons.add),
+                ElevatedButton(
                   onPressed: () =>
                       context.read<DemoBloc>().add(const DemoEvent.increment()),
+                  child: const Text('Increment'),
                 ),
                 const SizedBox(
-                  height: 10,
+                  width: 10,
                 ),
-                TextButton(
-                  child: const Icon(Icons.remove),
+                ElevatedButton(
                   onPressed: () =>
                       context.read<DemoBloc>().add(const DemoEvent.decrement()),
+                  child: const Text('Decrement'),
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _contentBlocConsumer(BuildContext context) {
+    return BlocConsumer<DemoBloc, DemoState>(
+      listener: (context, state) {
+        if (state.number > 5) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Number updated to ${state.number}'),
+            ),
+          );
+        }
+      },
+      builder: (context, state) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Text('${state.number}'),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                ElevatedButton(
+                  onPressed: () =>
+                      context.read<DemoBloc>().add(const DemoEvent.increment()),
+                  child: const Text('Increment'),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                ElevatedButton(
+                  onPressed: () =>
+                      context.read<DemoBloc>().add(const DemoEvent.decrement()),
+                  child: const Text('Decrement'),
                 ),
               ],
             ),
