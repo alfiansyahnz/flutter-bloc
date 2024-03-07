@@ -10,6 +10,11 @@ class BlocScreen extends StatefulWidget {
 class _BlocScreenState extends State<BlocScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('BLOC SCREEN'),
+      ),
+      body: Container(),
+    );
   }
 }
