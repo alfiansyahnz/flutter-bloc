@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/async/index.dart';
+import 'package:flutter_demo/bloc/bloc_screen.dart';
+import 'package:flutter_demo/sembast/index.dart';
 
 void main() {
   runApp(const MyApp());
@@ -93,16 +96,23 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             TextButton(
-              onPressed: () {},
-              child: Text('Sembast Example'),
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SembastScreen())),
+              child: const Text('Sembast Example'),
             ),
             TextButton(
-              onPressed: () {},
-              child: Text('Async Example'),
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AsynchronousScreen())),
+              child: const Text('Async Example'),
             ),
             TextButton(
-              onPressed: () {},
-              child: Text('State management Example'),
+              onPressed: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const BlocScreen())),
+              child: const Text('State management Example'),
             ),
           ],
         ),
